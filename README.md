@@ -9,6 +9,8 @@
 | LightOJ | [mahfuzmia1703](https://lightoj.com/user/mahfuzmia1703) | 11 | 
 | Vjudge | [mahfuzmia1703](https://vjudge.net/user/mahfuzmia1703) | 12 |
 | HackerRank | [mahfuzmia1703](https://www.hackerrank.com/mahfuzmia1703) | 16 |
-| Total | | 143 |
+| UVa | [mahfuzmia1703](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=15) | 0 |
+| Timus | [mahfuzmia1703](https://acm.timus.ru/author.aspx?id=340262) | 6 |
+| Total | | 149 |
 
 Last Updated: 27 Jan, 2023
