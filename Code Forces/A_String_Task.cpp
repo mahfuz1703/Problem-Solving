@@ -6,24 +6,27 @@ using namespace std;
 #define print(x) cout << x << "\n"
 #define FASTER ios_base::sync_with_stdio(0);cin.tie(0), cout.tie(0);
 
+bool isVowel(char c){
+    return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y');
+}
+
 void solve(){
-    string s1, s2; cin >> s1 >> s2;
-    string ptr1, ptr2;
-    for(auto u: s1){
-        char c = u;
-        ptr1 += tolower(c);
+    string s, ans; cin >> s;
+
+    for(auto u: s){
+        char c = tolower(u);
+        if(!isVowel(c)){
+            ans += '.';
+            ans += c;
+        }
     }
-    for(auto u: s2){
-        char c = u;
-        ptr2 += tolower(c);
-    }
-    if(ptr1 > ptr2) print(1);
-    else if(ptr1 < ptr2) print(-1);
-    else print(0);
+    print(ans);
+
 }
 int main(){
     FASTER
 
     solve();
+    
     return 0;
 }

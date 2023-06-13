@@ -7,18 +7,15 @@ using namespace std;
 #define FASTER ios_base::sync_with_stdio(0);cin.tie(0), cout.tie(0);
 
 void solve(){
-    string s1, s2; cin >> s1 >> s2;
-    string ptr1, ptr2;
-    for(auto u: s1){
-        char c = u;
-        ptr1 += tolower(c);
+    int n , sum; cin >> n;
+    while(n){
+        sum += (n%10);
+        n /= 10;
     }
-    for(auto u: s2){
-        char c = u;
-        ptr2 += tolower(c);
-    }
-    if(ptr1 > ptr2) print(1);
-    else if(ptr1 < ptr2) print(-1);
+    string temp, s = to_string(sum);
+    temp = s;
+    reverse(temp.begin(), temp.end());
+    if(s == temp) print(1);
     else print(0);
 }
 int main(){
