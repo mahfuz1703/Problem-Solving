@@ -9,6 +9,8 @@ using namespace std;
 #define FASTER ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define dekhaw(x) cout << x << "\n"
 
+/// Functions-------------
+bool isPowerOfTwo(int x) { return x && (!(x & (x - 1))); }
 void somadhan(){
 
 }
