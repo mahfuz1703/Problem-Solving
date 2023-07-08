@@ -10,7 +10,9 @@ using namespace std;
 #define dekhaw(x) cout << x << "\n"
 
 /// Functions-------------
+bool isVowel(char c){ return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y'); }
 bool isPowerOfTwo(int x) { return x && (!(x & (x - 1))); }
+
 void somadhan(){
 
 }
@@ -23,3 +25,5 @@ int main(){
     }
     return 0;
 }
+
+/// Alhamdulilla for everything
