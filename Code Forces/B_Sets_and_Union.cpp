@@ -39,23 +39,54 @@ const double PI = acos(-1);
 const double eps = 1e-9;
 const int inf = 2000000000;
 const ll infLL = 9000000000000000000;
-                                
+
 void testCase(){
     int n; cin >> n;
-    vii v;
+    vvi sets;
+    vi allNums;
+
     for(int i = 0; i < n; i++){
-        int x; cin >> x;
-        v.push_back({x, i+1});
+        int k; cin >> k;
+        vi s;
+        for(int i = 0; i < k; i++){
+            int num; cin >> num;
+            s.push_back(num);
+            allNums.push_back(num);
+        }
+        sets.push_back(s);
     }
-    sort(all(v));
-    if(n > 1 and v[0].first == v[1].first) cout << "Still Rozdil\n";
-    else cout << v[0].second << "\n";
+    sort(all(allNums));
+    allNums.erase(unique(all(allNums)), allNums.end());
+
+    int mas = 0;
+    for(int i = 1; i <= 50; i++){
+        vi able;
+        for(int j = 0; j < n; j++){
+            bool found = false;
+            for(int k = 0; k < sets[j].size(); k++){
+                if(i == sets[j][k]){
+                    found = true; break;
+                }
+            }
+            if(!found){
+                for(int k = 0; k < sets[j].size(); k++){
+                    able.push_back(sets[j][k]);
+                }
+            }
+        }
+        sort(all(able));
+        able.erase(unique(all(able)), able.end());
+        if(able != allNums){
+            mas = max(mas, (int)able.size());
+        }
+    }
+    cout << mas << "\n";
 }
 int main(){
     FASTER
                  
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--){
         testCase();
     }

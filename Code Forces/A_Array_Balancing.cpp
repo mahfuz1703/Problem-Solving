@@ -42,20 +42,25 @@ const ll infLL = 9000000000000000000;
                                 
 void testCase(){
     int n; cin >> n;
-    vii v;
+    vi mn(n), mx(n);
+    for(int i = 0; i < n; i++) cin >> mn[i];
+    for(int i = 0; i < n; i++) cin >> mx[i];
+
     for(int i = 0; i < n; i++){
-        int x; cin >> x;
-        v.push_back({x, i+1});
+        if(mn[i] > mx[i]) swap(mn[i], mx[i]);
     }
-    sort(all(v));
-    if(n > 1 and v[0].first == v[1].first) cout << "Still Rozdil\n";
-    else cout << v[0].second << "\n";
+    ll sum = 0;
+    for(int i = 0; i < n-1; i++){
+        sum += abs(mn[i] - mn[i+1]) + abs(mx[i] - mx[i+1]);
+    }
+
+    cout << sum << "\n";
 }
 int main(){
     FASTER
                  
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--){
         testCase();
     }

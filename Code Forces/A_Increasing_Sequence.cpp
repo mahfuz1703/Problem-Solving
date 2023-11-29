@@ -42,20 +42,22 @@ const ll infLL = 9000000000000000000;
                                 
 void testCase(){
     int n; cin >> n;
-    vii v;
+    vi v(n);
+    for(int i = 0; i < n; i++) cin >> v[i];
+    int ans = 1;
     for(int i = 0; i < n; i++){
-        int x; cin >> x;
-        v.push_back({x, i+1});
+        if(v[i] == ans) ans = v[i]+1;
+
+        if(i == n-1) break;
+        ans++;
     }
-    sort(all(v));
-    if(n > 1 and v[0].first == v[1].first) cout << "Still Rozdil\n";
-    else cout << v[0].second << "\n";
+    cout << ans << "\n";
 }
 int main(){
     FASTER
                  
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--){
         testCase();
     }

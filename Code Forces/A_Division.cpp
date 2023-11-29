@@ -41,21 +41,22 @@ const int inf = 2000000000;
 const ll infLL = 9000000000000000000;
                                 
 void testCase(){
-    int n; cin >> n;
-    vii v;
-    for(int i = 0; i < n; i++){
-        int x; cin >> x;
-        v.push_back({x, i+1});
-    }
-    sort(all(v));
-    if(n > 1 and v[0].first == v[1].first) cout << "Still Rozdil\n";
-    else cout << v[0].second << "\n";
+    int rating; cin >> rating;
+    if(rating >= 1900) cout << "Division 1\n";
+    else if(rating <= 1899 and rating >= 1600) cout << "Division 2\n";
+    else if(rating <= 1599 and rating >= 1400) cout << "Division 3\n";
+    else cout << "Division 4\n";
+    
+    // For Division 1: 1900≤rating
+    // For Division 2: 1600≤rating≤1899
+    // For Division 3: 1400≤rating≤1599
+    // For Division 4: rating≤1399
 }
 int main(){
     FASTER
                  
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--){
         testCase();
     }

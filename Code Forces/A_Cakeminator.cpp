@@ -7,9 +7,9 @@ using namespace std;
 typedef long long ll;
 typedef map<int, int> mi;
 typedef map<ll, ll> mll;
-typedef vector<int> vi;
+typedef vector<char> vc;
 typedef vector<ll> vl;
-typedef vector<vi> vvi;
+typedef vector<vc> vvc;
 typedef vector<vl> vvl;
 typedef pair<int,int> pii;
 typedef pair<double, double> pdd;
@@ -41,15 +41,41 @@ const int inf = 2000000000;
 const ll infLL = 9000000000000000000;
                                 
 void testCase(){
-    int n; cin >> n;
-    vii v;
-    for(int i = 0; i < n; i++){
-        int x; cin >> x;
-        v.push_back({x, i+1});
+    int r,c; cin >> r >> c;
+    char v[r][c];
+    for(int i = 0; i < r; i++){
+        for(int j = 0; j < c; j++) cin >> v[i][j];
     }
-    sort(all(v));
-    if(n > 1 and v[0].first == v[1].first) cout << "Still Rozdil\n";
-    else cout << v[0].second << "\n";
+    int cnt = 0, col = 0;
+    for(int i = 0; i < r; i++){
+        bool oky = true;
+        for(int j = 0; j < c; j++){
+            if(v[i][j] == 'S'){
+                oky = false;
+                break;
+            }
+        }
+        if(oky){
+            cnt += c;
+            col++;
+        }
+    }
+    for(int i = 0; i < c; i++){
+        bool oky = true;
+        for(int j = 0; j < r; j++){
+            if(v[j][i] == 'S'){
+                oky = false;
+                break;
+            }
+        }
+        if(oky) cnt += r-col;
+    }
+    cout << cnt << "\n";
+
+    // for(int i = 0; i < r; i++){
+    //     for(int j = 0; j < c; j++) cout << v[i][j];
+    //     cout << "\n";
+    // }
 }
 int main(){
     FASTER

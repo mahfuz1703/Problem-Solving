@@ -39,23 +39,30 @@ const double PI = acos(-1);
 const double eps = 1e-9;
 const int inf = 2000000000;
 const ll infLL = 9000000000000000000;
-                                
+
+const int mx = 2e5 + 50;
+ll a[mx], rep[mx];                              
 void testCase(){
     int n; cin >> n;
-    vii v;
-    for(int i = 0; i < n; i++){
-        int x; cin >> x;
-        v.push_back({x, i+1});
+    for(int i = 0; i <= n+2; i++){
+        rep[i] = 0;
     }
-    sort(all(v));
-    if(n > 1 and v[0].first == v[1].first) cout << "Still Rozdil\n";
-    else cout << v[0].second << "\n";
+    for(int i = 0; i < n; i++) cin >> a[i];
+
+    for(int i = n-1; i >= 0; i--){
+        rep[i] = rep[i+1] + (a[i] >= 0 ? a[i]:0);
+    }
+    ll ans = 0;
+    for(int i = 0; i < n; i++){
+        ans = max(ans, rep[i+1] + (i % 2 == 0 ? a[i]:0));
+    }
+    cout << ans << "\n";
 }
 int main(){
     FASTER
                  
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--){
         testCase();
     }

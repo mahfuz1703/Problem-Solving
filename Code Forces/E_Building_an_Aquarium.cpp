@@ -39,23 +39,33 @@ const double PI = acos(-1);
 const double eps = 1e-9;
 const int inf = 2000000000;
 const ll infLL = 9000000000000000000;
-                                
-void testCase(){
-    int n; cin >> n;
-    vii v;
+
+bool oky(ll arr[], ll n, ll m, ll k){
+    ll cnt = 0;
     for(int i = 0; i < n; i++){
-        int x; cin >> x;
-        v.push_back({x, i+1});
+        if(arr[i] < m) cnt += (m-arr[i]);
     }
-    sort(all(v));
-    if(n > 1 and v[0].first == v[1].first) cout << "Still Rozdil\n";
-    else cout << v[0].second << "\n";
+    return cnt <= k;
+}                               
+void testCase(){
+    ll n, k; cin >> n >> k;
+    ll arr[n];
+    for(int i = 0; i < n; i++) cin >> arr[i];
+    ll l = 0, h = INT_MAX, ans = INT_MAX;
+    while(l <= h){
+        ll m = (h-l)/2+l;
+        if(oky(arr, n, m, k)){
+            ans = m;
+            l = m + 1;
+        }else h = m - 1;
+    }
+    cout << ans << "\n";
 }
 int main(){
     FASTER
                  
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--){
         testCase();
     }

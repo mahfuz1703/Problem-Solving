@@ -40,24 +40,28 @@ const double eps = 1e-9;
 const int inf = 2000000000;
 const ll infLL = 9000000000000000000;
                                 
-void testCase(){
-    int n; cin >> n;
-    vii v;
-    for(int i = 0; i < n; i++){
-        int x; cin >> x;
-        v.push_back({x, i+1});
-    }
-    sort(all(v));
-    if(n > 1 and v[0].first == v[1].first) cout << "Still Rozdil\n";
-    else cout << v[0].second << "\n";
+int testCase(int a, int b){
+    if(a == 0 or a == 9 or b == 0 or b == 9) return 1;
+    else if(a == 1 or a == 8 or b == 1 or b == 8) return 2;
+    else if(a == 2 or a == 7 or b == 2 or b == 7) return 3;
+    else if(a == 3 or a == 6 or b == 3 or b == 6) return 4;
+    return 5;
 }
 int main(){
     FASTER
                  
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--){
-        testCase();
+        char c[10][10];
+        int ans = 0;
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){
+                cin >> c[i][j];
+                if(c[i][j] == 'X') ans += testCase(i, j);
+            }
+        }
+        cout << ans << "\n";
     }
     return 0;
 }

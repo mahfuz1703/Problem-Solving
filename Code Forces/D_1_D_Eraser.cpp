@@ -41,21 +41,26 @@ const int inf = 2000000000;
 const ll infLL = 9000000000000000000;
                                 
 void testCase(){
-    int n; cin >> n;
-    vii v;
-    for(int i = 0; i < n; i++){
-        int x; cin >> x;
-        v.push_back({x, i+1});
+    int n ,k, ans = 0; cin >> n >> k;
+
+    string s; cin >> s;
+    int i = 0, j = 0;
+    while(i < n){
+        if(s[i] == 'B'){
+            j = 0;
+            while(j <= k) j++;
+            i += (k-1);
+            ans++;
+        }
+        i++;
     }
-    sort(all(v));
-    if(n > 1 and v[0].first == v[1].first) cout << "Still Rozdil\n";
-    else cout << v[0].second << "\n";
+    cout << ans << "\n";
 }
 int main(){
     FASTER
                  
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--){
         testCase();
     }
