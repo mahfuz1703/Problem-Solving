@@ -37,10 +37,16 @@ typedef double dl;
 #define file() freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define print(x) cout << x << "\n"
 
+auto near(char a, char b){
+    if(a > b) swap(a, b);
+
+    return (b-a) == 1 or (b-a) == 4;
+}
+
 void solve(){
     char s1, s2, t1, t2; cin >> s1 >> s2 >> t1 >> t2;
 
-    if((abs(s1 - s2) == abs(t1 - t2)) and (s1 == t1 or s1 == t2 or s2 == t1 or s2 == t2)) cout << "Yes\n";
+    if(near(s1, s2) == near(t1, t2)) cout << "Yes\n";
     else cout << "No\n";
 }
 int main(){
