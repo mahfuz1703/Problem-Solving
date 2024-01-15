@@ -39,23 +39,30 @@ typedef double dl;
 
 void solve(){
     int n; cin >> n;
-    int res = 1, last = 8;
-    while(n){
-        if(n % 2 == 1) {
-            res = (res*last) % 10;
-            n--;
-        }else{
-            last = (last * last) % 10;
-            n /= 2;cpp
-        }
+    int left = 0, right = INT_MAX;
+    set <int> exclude;
+    while(n--){
+        int a, x; cin >> a >> x;
+        if(a == 1) left = max(left, x);
+        else if(a == 2) right = min(right, x);
+        else exclude.insert(x);
     }
-    print(res);
+
+    if(right < left) {
+        print("0"); return;
+    }
+
+    ll ans = right - left + 1;
+    for(auto u : exclude){
+        if(u >= left and u <= right) ans--;
+    }
+    print(ans);
 }
 int main(){
     FASTER
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--){
         solve();
     }

@@ -37,25 +37,26 @@ typedef double dl;
 #define file() freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define print(x) cout << x << "\n"
 
+/// Solve A
 void solve(){
-    int n; cin >> n;
-    int res = 1, last = 8;
-    while(n){
-        if(n % 2 == 1) {
-            res = (res*last) % 10;
-            n--;
-        }else{
-            last = (last * last) % 10;
-            n /= 2;cpp
-        }
+    int n = 4;
+    int mna = INT_MAX, mxa = INT_MIN, mnb = INT_MAX, mxb = INT_MIN;
+    while(n--){
+        int a, b; cin >> a >> b;
+        mna = min(mna, a);
+        mxa = max(mxa, a);
+        mnb = min(mnb, b);
+        mxb = max(mxb, b);
     }
-    print(res);
+    int x = mxa - mna, y = mxb - mnb;
+    ll ans = 1LL * x * y;
+    print(ans);
 }
 int main(){
     FASTER
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--){
         solve();
     }

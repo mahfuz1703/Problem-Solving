@@ -38,18 +38,8 @@ typedef double dl;
 #define print(x) cout << x << "\n"
 
 void solve(){
-    int n; cin >> n;
-    int res = 1, last = 8;
-    while(n){
-        if(n % 2 == 1) {
-            res = (res*last) % 10;
-            n--;
-        }else{
-            last = (last * last) % 10;
-            n /= 2;cpp
-        }
-    }
-    print(res);
+    ll x; cin >> x;
+    int
 }
 int main(){
     FASTER
