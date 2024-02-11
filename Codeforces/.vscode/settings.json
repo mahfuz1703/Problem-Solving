@@ -8,6 +8,7 @@
         "chrono": "cpp",
         "span": "cpp",
         "iostream": "cpp",
-        "complex": "cpp"
+        "complex": "cpp",
+        "cmath": "cpp"
     }
 }
