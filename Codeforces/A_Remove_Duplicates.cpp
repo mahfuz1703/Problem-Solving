@@ -39,34 +39,24 @@ typedef double dl;
 
 void solve(){
     int n; cin >> n;
+    vi v(n), vis(1123, 1), ans;
+    for(int i = 0; i < n; i++) cin >> v[i];
 
-    vi v(n);
-    ll sum = 0;
-    for(int i = 0; i < n; i++){
-        cin >> v[i];
-        sum += v[i];
+    for(int i = n-1; i >= 0; i--){
+        if(vis[v[i]]) ans.push_back(v[i]);
+        vis[v[i]] = 0;
     }
-    if(n == 1){
-        print("YES");
-        return;
-    }
-    ll extra = 0;
-    int avarage =  sum / n;
-    for(int i = 0; i < n; i++){
-        if(v[i] + extra < avarage){
-            print("NO");
-            return;
-        }else{
-            extra = v[i] + extra - avarage;
-        }
-    }
-    print("YES");
+    reverse(all(ans));
+
+    print(ans.size());
+    for(auto u : ans) cout << u << " ";
+    cout << "\n";
 }
 int main(){
     FASTER
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--){
         solve();
     }

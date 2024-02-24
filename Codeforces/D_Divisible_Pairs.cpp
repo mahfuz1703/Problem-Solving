@@ -38,29 +38,17 @@ typedef double dl;
 #define print(x) cout << x << "\n"
 
 void solve(){
-    int n; cin >> n;
+    int n, x, y; cin >> n >> x >> y;
 
-    vi v(n);
-    ll sum = 0;
+    map <pair<int, int> , int> mp;
+    ll cnt = 0;
     for(int i = 0; i < n; i++){
-        cin >> v[i];
-        sum += v[i];
+        int value; cin >> value;
+
+        cnt += mp[{(x - value % x) % x, value % y}];
+        mp[{value % x, value % y}]++;
     }
-    if(n == 1){
-        print("YES");
-        return;
-    }
-    ll extra = 0;
-    int avarage =  sum / n;
-    for(int i = 0; i < n; i++){
-        if(v[i] + extra < avarage){
-            print("NO");
-            return;
-        }else{
-            extra = v[i] + extra - avarage;
-        }
-    }
-    print("YES");
+    print(cnt);
 }
 int main(){
     FASTER

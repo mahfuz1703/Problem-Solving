@@ -40,27 +40,18 @@ typedef double dl;
 void solve(){
     int n; cin >> n;
 
-    vi v(n);
-    ll sum = 0;
-    for(int i = 0; i < n; i++){
-        cin >> v[i];
-        sum += v[i];
-    }
-    if(n == 1){
-        print("YES");
-        return;
-    }
-    ll extra = 0;
-    int avarage =  sum / n;
-    for(int i = 0; i < n; i++){
-        if(v[i] + extra < avarage){
-            print("NO");
-            return;
-        }else{
-            extra = v[i] + extra - avarage;
+    int ans = 0;
+    int tmp = 0;
+    while(n--){
+        int x; cin >> x;
+        if(x == 0) tmp++;
+        else{
+            ans = max(ans, tmp);
+            tmp = 0;
         }
     }
-    print("YES");
+    ans = max(tmp, ans);
+    print(ans);
 }
 int main(){
     FASTER

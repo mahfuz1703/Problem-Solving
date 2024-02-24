@@ -37,36 +37,35 @@ typedef double dl;
 #define file() freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define print(x) cout << x << "\n"
 
+bool compare(string s1,string s2){
+    return s1.size() < s2.size();
+}
 void solve(){
     int n; cin >> n;
+    vector<string> str(n);
 
-    vi v(n);
-    ll sum = 0;
-    for(int i = 0; i < n; i++){
-        cin >> v[i];
-        sum += v[i];
-    }
-    if(n == 1){
-        print("YES");
-        return;
-    }
-    ll extra = 0;
-    int avarage =  sum / n;
-    for(int i = 0; i < n; i++){
-        if(v[i] + extra < avarage){
-            print("NO");
-            return;
-        }else{
-            extra = v[i] + extra - avarage;
+    for(int i = 0; i < n; i++) cin >> str[i];
+
+    sort(str.begin(), str.end(), compare);
+    bool oky = true;
+    for(int i = 0; i < n-1; i++){
+        int found = str[i+1].find(str[i]);
+        if(found == string::npos){
+            oky = false;
+            break;
         }
     }
-    print("YES");
+
+    if(oky){
+        print("YES");
+        for(auto u : str) print(u);
+    }else print("NO");
 }
 int main(){
     FASTER
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--){
         solve();
     }

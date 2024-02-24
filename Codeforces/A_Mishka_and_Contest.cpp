@@ -38,35 +38,42 @@ typedef double dl;
 #define print(x) cout << x << "\n"
 
 void solve(){
-    int n; cin >> n;
-
+    int n, k; cin >> n >> k;
+    bool oky = true;
     vi v(n);
-    ll sum = 0;
     for(int i = 0; i < n; i++){
         cin >> v[i];
-        sum += v[i];
+        if(v[i] > k) oky = false;
     }
-    if(n == 1){
-        print("YES");
+
+    if(oky){
+        print(n);
         return;
     }
-    ll extra = 0;
-    int avarage =  sum / n;
-    for(int i = 0; i < n; i++){
-        if(v[i] + extra < avarage){
-            print("NO");
-            return;
-        }else{
-            extra = v[i] + extra - avarage;
-        }
+
+    if(v[0] > k and v[n-1] > k){
+        print(0);
+        return;
     }
-    print("YES");
+
+    int l = 0, r = 0;
+    for(int i = 0; i < n; i++){
+        if(v[i] <= k) l++;
+        else break;
+    }
+    for(int i = n-1; i >= 0; i--){
+        if(v[i] <= k) r++;
+        else break;
+    }
+
+    print(l+r);
+
 }
 int main(){
     FASTER
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--){
         solve();
     }

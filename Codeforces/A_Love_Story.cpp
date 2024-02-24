@@ -38,29 +38,13 @@ typedef double dl;
 #define print(x) cout << x << "\n"
 
 void solve(){
-    int n; cin >> n;
-
-    vi v(n);
-    ll sum = 0;
-    for(int i = 0; i < n; i++){
-        cin >> v[i];
-        sum += v[i];
+    string ini = "codeforces", s;
+    cin >> s;
+    int ans = 0;
+    for(int i = 0; i < 10; i++){
+        if(ini[i] != s[i]) ans++;
     }
-    if(n == 1){
-        print("YES");
-        return;
-    }
-    ll extra = 0;
-    int avarage =  sum / n;
-    for(int i = 0; i < n; i++){
-        if(v[i] + extra < avarage){
-            print("NO");
-            return;
-        }else{
-            extra = v[i] + extra - avarage;
-        }
-    }
-    print("YES");
+    print(ans);
 }
 int main(){
     FASTER
