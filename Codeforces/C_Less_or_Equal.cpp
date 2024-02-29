@@ -30,43 +30,42 @@ typedef double dl;
 #define MOD 1000000007
 #define mem(a,b) memset(a, b, sizeof(a) )
 #define gcd(a,b) __gcd(a,b)
+#define lcm(a, b) (a * b) / gcd(a, b)
 #define sqr(a) ((a) * (a))
 #define FASTER ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 #define fraction() cout.unsetf(ios::floatfield); cout.precision(10); cout.setf(ios::fixed,ios::floatfield);
 #define file() freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
-#define print(x) cout << x << "\n";
-
-/// Functions-------------
-bool isVowel(char c){ return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y'); }
-bool isPowerOfTwo(int x) { return x && (!(x & (x - 1))); }
+#define print(x) cout << x << "\n"
 
 void solve(){
-    ll n, k; cin >> n >> k;
-    vl a(n+1);
+    int n, k; cin >> n >> k;
+    vi v(n);
+    for(int i = 0; i < n; i++) cin >> v[i];
 
-    a[0] = 0;
-    for(ll i = 1; i < n+1; i++) cin >> a[i];
-
-    ll mx = 0;
-    // bool oky = 0;
-
-    for(ll i = 0; i < n; i++){
-        mx = max(mx, (a[i+1] - a[i]));
-        // oky = 1;
+    sort(all(v));
+    if(k==0){
+        if(v[k] == 1) print(-1);
+        else print(1);
     }
-    // if(oky){
-    //     ll mx1 = ((k - a[n]) * 2);
-    //     mx = max(mx, mx1);
+    else{
+        if(v[k] == v[k-1]) print(-1);
+        else print(v[k-1]);
+    }
+
+    // int x = v[k-1]+1;
+    // int cnt = 0;
+    // for(int i = 0; i < n; i++){
+    //     if(v[i] <= x) cnt++;
     // }
 
-    mx = max(mx, (k - a[n]) * 2);
-    print(mx)
+    // if(cnt != k) print("-1");
+    // else print(x);
 }
 int main(){
     FASTER
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--){
         solve();
     }
