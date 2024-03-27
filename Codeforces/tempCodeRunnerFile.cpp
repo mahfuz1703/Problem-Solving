@@ -1,1 +1,2 @@
-adj[v].erase(remove(adj[v].begin(), adj[v].end(), u), adj[v].end());
+for(auto u : str) cout << u << " ";
+    // cout << "\n";

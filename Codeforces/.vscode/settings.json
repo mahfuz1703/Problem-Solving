@@ -9,6 +9,7 @@
         "span": "cpp",
         "iostream": "cpp",
         "complex": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "*.tcc": "cpp"
     }
 }
