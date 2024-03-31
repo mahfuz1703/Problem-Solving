@@ -37,44 +37,34 @@ typedef double dl;
 #define file() freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define print(x) cout << x << "\n"
 
-vector <int> bin;
-vector <int> isPossible(1000001, 0);
-void preProcess(){
-    int n = 100000;
-    for(int i = 1; i <= n; i++){
-        int tmp = i;
-        int b = 0;
-        while(tmp){
-            if(tmp % 10 > 1){
-                b = 1;  
-                break;
-            }
-            tmp /= 10;
-        }
-        if(!b) bin.push_back(i);
-    }
-
-    isPossible[1] = 1;
-    isPossible[0] = 1;
-    for(auto u : bin){
-        for(int j = 1; j <= 1000000; j++){
-            if(isPossible[j] and 1LL * u * j <= 1000000){
-                isPossible[u * j] = 1;
-            }
-        }
-    }
-}
 void solve(){
     int n; cin >> n;
-    if(isPossible[n]) print("YES");
-    else print("NO");
+    string s; cin >> s;
+    int x = 0, y = 0;
+    for(auto u : s){
+        if(x == 1 and y == 1) {
+            print("YES");
+            return;
+        }
+        
+
+        if(u == 'L') x--;
+        else if(u == 'R') x++;
+        else if(u == 'U') y++;
+        else y--;
+    }
+    if(x == 1 and y == 1) {
+        print("YES");
+        return;
+    }
+
+    print("NO");
 }
 int main(){
     FASTER
 
     int t = 1;
     cin >> t;
-    preProcess();
     while(t--){
         solve();
     }
