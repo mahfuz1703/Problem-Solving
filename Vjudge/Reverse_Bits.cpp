@@ -1,0 +1,46 @@
+/// In the name of ALLAH
+/// La ilaha illallahu Muhammadur Rasulullah
+
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+#define pb push_back
+#define endl '\n'
+#define all(a) (a).begin(),(a).end()
+#define MOD 1000000007
+#define FASTER ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define print(x) cout << x << "\n"
+
+void solve(){
+    ll n; cin >> n;
+    int bits[32] = {0};
+
+    int i = 0;
+    while(n > 0){
+        bits[i] = (n&1);
+        i++;
+        n = n >> 1;
+    }
+
+    ll ans = 0, k = 1;
+    for(int j = 31; j >= 0; j--){
+        ans += bits[j] * k;
+        k <<= 1;
+    }
+    cout << ans << "\n";
+}
+int main(){
+    FASTER
+
+    int t = 1;
+    cin >> t;
+    while(t--){
+        solve();
+    }
+    return 0;
+}
+
+/// Alhamdulilla for everything
